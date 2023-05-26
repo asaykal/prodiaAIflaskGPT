@@ -10,7 +10,7 @@ Before running this application, make sure you have the following:
 -OpenAI API key: You need an OpenAI API key to make requests to the GPT-3.5 Turbo model. Set this key as an environment variable --OPENAI_API_KEY.
 
 ##Installation
-1. Clone this repository: git clone https://github.com/your-username/prodiaAIflaskGPT.git
+1. Clone this repository: git clone https://github.com/asaykal/prodiaAIflaskGPT
 2. Change into the project directory: cd prodiaAIflaskGPT
 3. Install the required Python packages using pip: pip install -r requirements.txt
 
