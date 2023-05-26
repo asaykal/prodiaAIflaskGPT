@@ -1,0 +1,119 @@
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #222;
+            color: #fff;
+        }
+
+        h1 {
+            color: #fff;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ccc;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+            width: 300px;
+            background-color: #444;
+            color: #fff;
+            border: none;
+        }
+
+        button {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            color: #fff;
+        }
+
+		.image-grid {
+			display: grid;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			grid-gap: 5px;
+			margin-top: 20px;
+		}
+		.image-container {
+		  width: 100%;
+		  height: 0;
+		  padding-bottom: 100%;
+		  position: relative;
+		  overflow: hidden;
+		}
+
+		img {
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  width: 100%;
+		  height: 100%;
+		  object-fit: cover;
+		}
+		.image-popup {
+		  display: none;
+		  position: fixed;
+		  top: 0;
+		  left: 0;
+		  width: 100%;
+		  height: 100%;
+		  background-color: rgba(0, 0, 0, 0.9);
+		  z-index: 9999;
+		  text-align: center;
+		  overflow: auto;
+		}
+
+		.image-popup img {
+		  max-height: 90vh;
+		  max-width: 90vw;
+		  margin: auto;
+		  margin-top: 5vh;
+		  object-fit: contain;
+		}
+		@media screen and (max-width: 600px) {
+		  .image-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		  }
+		}
+		.checkbox-container {
+			display: flex;
+			align-items: center;
+		}
+
+        select, option {
+            background-color: #444;
+            color: #fff;
+            border: none;
+        }
+
+        select:focus, option:checked {
+            outline: none;
+        }
+		textarea {
+			resize: vertical;
+			width: 100%;
+			max-width: 500px;
+			min-width: 300px;
+			padding: 10px;
+			background-color: #444;
+			color: #fff;
+			border: none;
+			box-sizing: border-box;
+			height: 150px; 
+			transition: height 0.3s; 
+		}

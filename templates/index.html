@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Generation</title>
+	<link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='icon.png') }}"/>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Image Generation</h1>
+    <form action="/suggest" method="POST">
+		<label for="keyword">Enter Keyword(s):</label>
+		<input type="text" id="keyword" name="keyword" required>
+		<button type="submit">Get Suggestions</button>
+	</form>
+    <form action="/" method="POST">
+        <label for="prompt">Enter Prompt:</label>
+        <textarea id="prompt" name="prompt" required>{{ prompt }}</textarea><br><br>
+        <label for="model">Select Model:</label>
+        <select id="model" name="model">
+            <option value="Realistic_Vision_V2.0.safetensors [79587710]">Realistic Vision</option>
+            <option value="anything-v4.5-pruned.ckpt [65745d25]">Anything 4.5</option>
+            <option value="deliberate_v2.safetensors [10ec4b29]">Deliberate</option>
+            <option value="openjourney_V4.ckpt [ca2f377f]">Openjourney 4</option>
+            <option value="dreamlike-diffusion-2.0.safetensors [fdcf65e7]">Dreamlike</option>
+            <option value="portrait+1.0.safetensors [1400e684]">Portrait</option>
+            <option value="dreamshaper_5BakedVae.safetensors [a3fbf318]">Dreamshaper</option>
+            <option value="analog-diffusion-1.0.ckpt [9ca13f02]">Analog Diffusion</option>
+        </select>
+        <select id="aspect_ratio" name="aspect_ratio" required>
+		    <option value="square"> Square </option>
+            <option value="portrait"> Portrait </option>
+            <option value="landscape"> Landscape</option>
+        </select>
+        <br><br>	
+        <div class="checkbox-container">
+            <input type="checkbox" id="upscale" name="upscale" value="True">
+            <label for="upscale"> Upscale </label>
+        </div>
+        <br>
+        <button type="submit">Generate Image</button>
+    </form>
+    
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+    
+    <div class="image-grid">
+        {% for filename in images %}
+        <div class="image-container">
+            <img src="{{ url_for('static_image', filename=filename) }}" alt="Generated Image" onclick="showImage(this)">
+        </div>
+        {% endfor %}
+    </div>    <br><br>
+	
+	<div class="image-popup" id="imagePopup" onclick="hideImage()">
+        <img id="popupImage" src="" alt="Popup Image">
+    </div>
+
+    <script>
+        function showImage(image) {
+            var popup = document.getElementById("imagePopup");
+            var popupImage = document.getElementById("popupImage");
+
+            popup.style.display = "block";
+            popupImage.src = image.src;
+        }
+
+        function hideImage() {
+            var popup = document.getElementById("imagePopup");
+            popup.style.display = "none";
+        }
+    </script>
+</body>
+</html>
